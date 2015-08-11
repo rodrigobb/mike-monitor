@@ -36,10 +36,12 @@
   },
   "preferGlobal": false,
   "dependencies": {
-    "rabbit": "*"
+    "rabbit.js": "*",
+    "socket.io": "*"
   },
   "devDependencies": {
   },
+  "readme": "# mike-monitor\nProof of concept for a Dashboard feed by RabbitMQ.",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/rodrigobb/mike-monitor/issues"
