@@ -1,0 +1,50 @@
+{
+  "name": "mike-monitor",
+  "version": "0.0.1",
+  "description": "Proof of concept for a Dashboard feed by RabbitMQ.",
+  "keywords": [
+    "dashboard",
+    "rabbitmq",
+    "mq",
+    "jobs",
+    "amqp"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "RBBusiness",
+    "email": "labs@rodri.net",
+    "url": "http://rodri.net"
+  },
+  "contributors": [
+    {
+      "name": "Rodrigo Borrego Bernabé",
+      "email": "rodri@rodri.net",
+      "url": "http://rodri.net"
+    }
+  ],
+  "engines": [
+    "node >=0.8.0",
+    "npm >=1.0.0"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rodrigobb/mike-monitor"
+  },
+  "main": "index",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "preferGlobal": false,
+  "dependencies": {
+    "rabbit": "*"
+  },
+  "devDependencies": {
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/rodrigobb/mike-monitor/issues"
+  },
+  "_id": "mike-monitor@0.0.1",
+  "directories": {},
+  "homepage": "https://github.com/rodrigobb/mike-monitor"
+}
