@@ -16,6 +16,7 @@ Proof of concept for a Dashboard feed by RabbitMQ
 ```bash
 $ npm install
 $ composer install
+```
 
 ### Starting socket server
 
