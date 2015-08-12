@@ -9,7 +9,16 @@
 <body>
 <div id="wrapper">
 	<h1>Mike's monitor</h1>
-	<ul id="log"></ul>
+	<div id="ping_zone">
+		<h2>PING</h2>
+		<ul id="ping_log"></ul>
+	</div>
+	<div id="homepage_zone">
+		<h2>HOMEPAGE</h2>
+		<ul id="homepage_log"></ul>
+	</div>
+	<hr />
+	<ul id="general_log"></ul>
 </div>
 <script type="text/javascript" src="http://rodri.net:8080/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="js/websocket.js"></script>
