@@ -1,0 +1,17 @@
+
+.zone {
+    width: 50%;
+    float: left;
+}
+
+.wide {
+    width: auto;
+    float: none;
+    clear: both;
+}
+
+.log {
+    border: inset;
+    height: 100px;
+    overflow-y: auto;
+}

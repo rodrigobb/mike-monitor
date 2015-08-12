@@ -2,13 +2,13 @@ window.onload = function()
 {
     var socket = io.connect('http://rodri.net:8080');
     socket.on('push_notification', event_received);
-}
+};
 
 
 var event_received = function (data) {
     console.debug(data);
-    var time = data.minutes + 'm ' + data.seconds + 's';
-    var text = time+"__"+data.routing_key;
+    var date = new Date(data.timestamp * 1000);
+    var text = date + " " + JSON.stringify(data);
 
     add_node('general', text);
 
@@ -19,12 +19,18 @@ var event_received = function (data) {
     if (data.routing_key.indexOf('.ping.') > 0) {
         add_node('ping', text);
     }
-}
+};
 
 function add_node(key, text) {
+    var list = document.querySelector('#'+key+'_log');
+
+    if (list == undefined) {
+        return;
+    }
+
     var node = document.createElement("LI");
     var textnode = document.createTextNode(text);
     node.appendChild(textnode);
 
-    document.querySelector('#'+key+'_log').appendChild(node);
+    list.insertBefore(node, list.childNodes[0]);
 }
