@@ -12,9 +12,8 @@ Proof of concept for a Dashboard feed by RabbitMQ
 ### Installation
 
 * Clone project
-* run npm and composer install
+* run composer install (npm install will be run after composer install automatically)
 ```bash
-$ npm install
 $ composer install
 ```
 
@@ -41,3 +40,8 @@ Examples:
 
 * monitor.ping.info
 * monitor.homepage.error
+
+## TO DO
+
+* Serve js files for index.html from an indepent server (or from same folder) instead of from socket server
+    - http://solvedstack.com/questions/node-js-quick-file-server-static-files-over-http

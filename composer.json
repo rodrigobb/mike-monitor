@@ -1,5 +1,13 @@
 {
   "require": {
     "videlalvaro/php-amqplib": "v2.1.0"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "npm install"
+    ],
+    "post-update-cmd": [
+      "npm install"
+    ]
   }
 }
