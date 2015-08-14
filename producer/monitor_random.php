@@ -10,52 +10,26 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-/*
- * Fake possible values
- *
-    array(
-        'routing_key' => 'monitor.ping',
-        'level'       => 'info',            // info, warn, error
-        'timestamp'   => null,
-        'total'         => $cost * 100.0,
-        'minutes'       => rand(0, 60),
-        'seconds'       => rand(0, 60),
-    );
-*/
+$generator = (count($argv) >= 2) ? $argv[1]:"default";
 
-$source = 'monitor';
-$fixtures_section = array('ping', 'homepage');
-$fixtures_level = array('info', 'warn', 'error');
-
+require_once(__DIR__.'/examples/'.$generator.'.php');
 
 /*** Rabbit setting up **/
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 
 $channel->exchange_declare('mike_monitor', 'topic', false, false, false);
-
 while(true) {
-    $cost = rand(0,5);
-    $level = rand(0,2);
-    $routing_key = $source.'.'.$fixtures_section[rand(0,1)].'.'.$fixtures_level[$level];
-
-    $data = array(
-        'socket_id' => 'push_notification',
-        'body' => array(
-            'routing_key'   => $routing_key,
-            'level'         => $level,
-            'timestamp'     => time(),
-            'total'         => $cost * 100.0,
-            'minutes'       => rand(0, 60),
-            'seconds'       => rand(0, 60),
-        )
-    );
-
+    $wait = 0;
+    $data = generate_message($wait);
     $msg = new AMQPMessage(json_encode($data));
 
+    $routing_key = $data['body']['routing_key'];
+
     $channel->basic_publish($msg, 'mike_monitor', $routing_key);
+
     echo " [x] Sent ",$routing_key,':',json_encode($data)," \n";
-    sleep($cost);
+    sleep($wait);
 }
 
 $channel->close();
